@@ -11,8 +11,10 @@
     @using (Html.BeginForm("Index","Peliculas",FormMethod.Get))
     {
 <p>
-    Genre: @Html.DropDownList("generoPelicula", "All")
-    Title: @Html.TextBox("BuscarString") <br />
+    Precio Máximo: @Html.TextBox("precioMax")
+    Precio Mínimo: @Html.TextBox("precioMin")
+    Genero: @Html.DropDownList("generoPelicula", "All")
+    Titulo: @Html.TextBox("BuscarString") <br />
     <input type="submit" value="Filtrar" />
 </p>
     }
