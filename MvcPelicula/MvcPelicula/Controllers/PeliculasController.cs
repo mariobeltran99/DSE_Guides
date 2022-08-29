@@ -15,7 +15,7 @@ namespace MvcPelicula.Controllers
         private PeliculaDBContext db = new PeliculaDBContext();
 
         // GET: Peliculas
-        public ActionResult Index(string buscarString, string generoPelicula)
+        public ActionResult Index(string buscarString, string generoPelicula, decimal precioMax = decimal.MaxValue, decimal precioMin = 0)
         {
             var GeneroLst = new List<string>();
             var GeneroQry = from d in db.Peliculas
@@ -34,6 +34,11 @@ namespace MvcPelicula.Controllers
             if (!string.IsNullOrEmpty(generoPelicula))
             {
                 peliculas = peliculas.Where(x => x.Genero == generoPelicula);
+            }
+
+            if (precioMax >= 0)
+            {
+                peliculas = peliculas.Where(elemento => elemento.Precio <= precioMax && elemento.Precio >= precioMin);
             }
 
             return View(peliculas);
