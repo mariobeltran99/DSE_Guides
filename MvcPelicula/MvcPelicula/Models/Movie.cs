@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Data.Entity;
-using System.ComponentModel.DataAnnotations;
 
 namespace MvcPelicula.Models
 {
-    public class Pelicula
+    public class Movie
     {
-        public string ID { get; set; }
-        public string Titulo { get; set; }
-        [Display(Name = "Fecha de Lanzamiento")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime FechaLanzamiento { get; set; }
-        public string Genero { get; set; }
-        public decimal Precio { get; set; }
+        public string id { get; set; }
+        public string title { get; set; }
+        public DateTime dateLaunch { get; set; }
+        public string genre { get; set; }
+        public decimal price { get; set; }
     }
-    public class PeliculaDBContext: DbContext
+    public class MovieDBContext: DbContext
     {
-        public DbSet<Pelicula> Peliculas { get; set; }
+        public DbSet<Movie> Movies { get; set; }
     }
 }
